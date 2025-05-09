@@ -7,8 +7,6 @@ const authRoutes = require('./authRoutes');
 const taskRoutes = require('./taskRoutes');
 const cors = require('cors');
 const morgan = require('morgan');
-const swaggerUi = require('swagger-ui-express');
-const swaggerJsdoc = require('swagger-jsdoc');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -58,22 +56,6 @@ app.use((err, req, res, next) => {
     next(err);
   }
 });
-
-// Configuración de Swagger
-const swaggerOptions = {
-  definition: {
-    openapi: '3.0.0',
-    info: {
-      title: 'API de Tareas',
-      version: '1.0.0',
-      description: 'Documentación de la API para la gestión de tareas',
-    },
-  },
-  apis: ['./**/*.js'], // Escanear todos los archivos .js en el proyecto
-};
-
-const swaggerDocs = swaggerJsdoc(swaggerOptions);
-app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocs));
 
 app.listen(PORT, () => {
   console.log(`Servidor corriendo en http://localhost:${PORT}`);
