@@ -16,7 +16,7 @@ services:
     container_name: to-do-list
     restart: always
     ports:
-      - "3000:3000"
+      - "3700:3700"
     environment:
       MONGO_URL: mongodb://root:example@mongo:27017/BaseCrud?authSource=admin
     depends_on:
