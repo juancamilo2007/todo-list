@@ -17,11 +17,11 @@ router.post('/register', async (req, res) => {
   } catch (error) {
     console.error('Error en registro:', error);
     if (error.code === 11000) {
-      res.status(400).send('El nombre de usuario o correo ya está en uso');
+      res.status(400).json({ error: 'El nombre de usuario o correo ya está en uso' });
     } else if (error.name === 'ValidationError') {
-      res.status(400).send('Error de validación: ' + error.message);
+      res.status(400).json({ error: 'Error de validación: ' + error.message });
     } else {
-      res.status(400).send('Error al registrar usuario: ' + error.message);
+      res.status(400).json({ error: error.message });
     }
   }
 });

@@ -18,21 +18,6 @@ function authMiddleware(req, res, next) {
 const router = express.Router();
 const SECRET_KEY = 'your_secret_key';
 // Middleware para manejar errores de validación de MongoDB
-// Registro
-router.post('/register', async (req, res) => {
-  console.log('POST /register - body:', req.body);
-  try {
-    const { username, password } = req.body;
-    const user = new User({ username, password });
-    await user.save();
-    console.log('Usuario registrado exitosamente:', username);
-    res.status(201).send('Usuario registrado exitosamente');
-  } catch (error) {
-    console.error('Error al registrar usuario:', error);
-    res.status(400).send('Error al registrar usuario');
-  }
-});
-
 // Inicio de sesión
 router.post('/login', async (req, res) => {
   console.log('POST /login - body:', req.body);
