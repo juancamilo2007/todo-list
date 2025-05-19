@@ -28,8 +28,7 @@ app.use('/api/tasks', (req, res, next) => {
   if (req.method === 'OPTIONS') return next();
   const token = req.headers['authorization'];
   if (!token) return res.status(403).send('Token no proporcionado');
-  jwt.verif
-  y(token, SECRET_KEY, (err, decoded) => {
+  jwt.verify(token, SECRET_KEY, (err, decoded) => {
     if (err) return res.status(401).send('Token inválido');
     req.userId = decoded.userId;
     next();
@@ -61,4 +60,4 @@ app.use((err, req, res, next) => {
 app.listen(PORT, () => {
   console.log(`Servidor corriendo en http://localhost:${PORT}`);
 });
-// Manejo de errores 404  
+// Manejo de errores 404

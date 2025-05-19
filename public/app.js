@@ -1,4 +1,4 @@
-const API_URL = 'http://localhost:3000/api';
+const API_URL = 'http://localhost:3700/api';
 
 // Manejo de registro
 if (document.getElementById('register-form')) {
