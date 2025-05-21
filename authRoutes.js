@@ -32,11 +32,14 @@ router.post('/login', async (req, res) => {
     const { email, password } = req.body;
     const user = await User.findOne({ email });
     if (!user || !(await bcrypt.compare(password, user.password))) {
+      console.log('Intento de login fallido para email:', email);
       return res.status(401).send('Credenciales inválidas');
     }
     const token = jwt.sign({ userId: user._id }, SECRET_KEY, { expiresIn: '1h' });
+    console.log('Login exitoso para email:', email);
     res.json({ token });
   } catch (error) {
+    console.error('Error al iniciar sesión:', error);
     res.status(400).send('Error al iniciar sesión');
   }
 });
