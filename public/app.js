@@ -1,4 +1,4 @@
-const API_URL = 'http://localhost:3700/api';
+const API_URL = 'http://172.23.235.78:3700/api';
 
 // Manejo de registro
 if (document.getElementById('register-form')) {
