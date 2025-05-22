@@ -1,4 +1,4 @@
-const API_URL = 'http://20.81.138.59:3700/api';
+const API_URL = 'http://135.119.192.98:4100/api';
 
 // Manejo de registro
 if (document.getElementById('register-form')) {
